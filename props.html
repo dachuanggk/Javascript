@@ -1,0 +1,47 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>props</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        <form-component :title='titleLabel'
+        :author='authorLabel'
+        >
+    </form-component>
+    </div>
+    <template id="FormComponent">
+        <div>
+            <form action="">
+                <label for="title">{{title}}</label>
+                <input type="text" id="title"><br>
+                <label for="author">{{author}}</label>
+                <input type="text" id="author"><br>
+                <button>Submit</button>
+            </form>
+        </div>
+    </template>
+    <script>
+        const formComponent = {
+            template:FormComponent,
+            props:['title','author']
+        }
+        
+        const app = new Vue({
+            el:'#root',
+            components:{
+                'form-component':formComponent
+            },
+            data(){
+                return{
+                    titleLabel:'The Title:',
+                    authorLabel:'The author:' 
+                }
+            }
+
+        })
+    </script>
+</body>
+</html>
